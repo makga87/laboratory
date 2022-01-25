@@ -15,7 +15,7 @@
     <description>spring-boot-docker</description>
     <properties>
         <java.version>1.8</java.version>
-        <restdocs-api-spec.version>0.10.0</restdocs-api-spec.version>
+        <restdocs-api-spec.version>0.15.2</restdocs-api-spec.version>
         <restdocs-spec.version>0.19</restdocs-spec.version>
     </properties>
 
@@ -26,29 +26,7 @@
         </repository>
     </repositories>
 
-    <pluginRepositories>
-        <pluginRepository>
-            <id>jcenter</id>
-            <url>https://jcenter.bintray.com</url>
-        </pluginRepository>
-    </pluginRepositories>
-    <plugin>
-        <groupId>com.github.berkleytechnologyservices.restdocs-spec</groupId>
-        <artifactId>restdocs-spec-maven-plugin</artifactId>
-        <version>${restdocs-spec.version}</version>
-        <executions>
-            <execution>
-                <goals>
-                    <goal>generate</goal>
-                </goals>
-                <configuration>
-                    <specification>OPENAPI_V3</specification>
-                    <format>JSON</format>
-                    <outputDirectory>${project.build.directory}/classes/static/docs</outputDirectory>
-                </configuration>
-            </execution>
-        </executions>
-    </plugin>
+
 
     <dependencies>
         <dependency>
@@ -93,6 +71,13 @@
         </dependency>
     </dependencies>
 
+    <pluginRepositories>
+        <pluginRepository>
+            <id>jcenter</id>
+            <url>https://jcenter.bintray.com</url>
+        </pluginRepository>
+    </pluginRepositories>
+
     <build>
         <plugins>
             <plugin>
@@ -103,7 +88,7 @@
             <!--
             restdoc asciidoc
             -->
-            <plugin>
+           <!-- <plugin>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
                 <executions>
@@ -122,11 +107,26 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>-->
+
+            <plugin>
+                <groupId>com.github.berkleytechnologyservices.restdocs-spec</groupId>
+                <artifactId>restdocs-spec-maven-plugin</artifactId>
+                <version>${restdocs-spec.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <specification>OPENAPI_V3</specification>
+                            <format>JSON</format>
+                            <outputDirectory>${project.build.directory}/json</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
-
-
-
 
 </project>
