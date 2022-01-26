@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(HelloWorldController.class)
-@AutoConfigureRestDocs(outputDir = "target/restdoc/snippets")
+@AutoConfigureRestDocs
 class HelloWorldControllerTest {
 
     @Autowired
