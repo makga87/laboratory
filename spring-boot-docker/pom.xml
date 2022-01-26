@@ -16,7 +16,7 @@
     <properties>
         <java.version>1.8</java.version>
         <restdocs-api-spec.version>0.15.2</restdocs-api-spec.version>
-        <restdocs-spec.version>0.19</restdocs-spec.version>
+        <restdocs-spec.version>0.21</restdocs-spec.version>
     </properties>
 
     <repositories>
@@ -25,8 +25,6 @@
             <url>https://jcenter.bintray.com</url>
         </repository>
     </repositories>
-
-
 
     <dependencies>
         <dependency>
@@ -66,6 +64,12 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.springframework.restdocs</groupId>
+            <artifactId>spring-restdocs-asciidoctor</artifactId>
+            <version>${spring-restdocs.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.amqp</groupId>
             <artifactId>spring-rabbit</artifactId>
         </dependency>
@@ -88,7 +92,7 @@
             <!--
             restdoc asciidoc
             -->
-           <!-- <plugin>
+            <plugin>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
                 <executions>
@@ -107,10 +111,10 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
 
             <plugin>
-                <groupId>com.github.berkleytechnologyservices.restdocs-spec</groupId>
+                <groupId>io.github.berkleytechnologyservices</groupId>
                 <artifactId>restdocs-spec-maven-plugin</artifactId>
                 <version>${restdocs-spec.version}</version>
                 <executions>
@@ -119,9 +123,19 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <specification>OPENAPI_V3</specification>
-                            <format>JSON</format>
-                            <outputDirectory>${project.build.directory}/json</outputDirectory>
+                            <specifications>
+                                <specification>
+                                    <type>OPENAPI_V2</type>
+                                </specification>
+                                <specification>
+                                    <type>OPENAPI_V3</type>
+                                    <format>JSON</format>
+                                </specification>
+                                <specification>
+                                    <type>POSTMAN_COLLECTION</type>
+                                    <filename>my-api-collection</filename>
+                                </specification>
+                            </specifications>
                         </configuration>
                     </execution>
                 </executions>
