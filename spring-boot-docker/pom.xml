@@ -57,6 +57,14 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.22</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.springframework.restdocs/spring-restdocs-mockmvc -->
         <dependency>
             <groupId>org.springframework.restdocs</groupId>
@@ -90,7 +98,7 @@
             </plugin>
 
             <!--
-            restdoc asciidoc
+                restdoc asciidoc
             -->
             <plugin>
                 <groupId>org.asciidoctor</groupId>
@@ -105,9 +113,13 @@
                         <configuration>
                             <sourceDocumentName>index.adoc</sourceDocumentName>
                             <backend>html</backend>
+                            <doctype>book</doctype>
                             <attributes>
                                 <snippets>${project.build.directory}/snippets</snippets>
                             </attributes>
+                            <sourceDirectory>${basedir}/src/docs</sourceDirectory>
+                            <sourceDocumentName>index.adoc</sourceDocumentName>
+                            <outputDirectory>${project.build.directory}/classes/static/docs</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
@@ -123,6 +135,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
+                            <host>localhost:8080</host>
                             <specifications>
                                 <specification>
                                     <type>OPENAPI_V2</type>
