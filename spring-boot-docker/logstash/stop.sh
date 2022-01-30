@@ -1,3 +1,3 @@
 #!/usr/bin/bash
 
-docker stop `(docker ps | grep elasticsearch | awk '{print $1}')`
+docker stop `(docker ps | grep logstash | awk '{print $1}')`

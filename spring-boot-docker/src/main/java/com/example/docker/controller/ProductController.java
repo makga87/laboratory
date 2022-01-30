@@ -1,6 +1,5 @@
 package com.example.docker.controller;
 
-import com.example.docker.dto.Member;
 import com.example.docker.dto.Product;
 import com.example.docker.dto.Result;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class ProductController {
 
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/api/v1.0/product/{productId}")
     public ResponseEntity<Product> getProduct(@PathVariable("productId") int productId) {
 
@@ -22,7 +20,6 @@ public class ProductController {
                 .build());
     }
 
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/api/v1.0/product")
     public ResponseEntity<Result> setProduct(@RequestBody Product product) {
 

@@ -28,6 +28,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>7.0.1</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.epages</groupId>
             <artifactId>restdocs-api-spec</artifactId>
             <version>${restdocs-api-spec.version}</version>

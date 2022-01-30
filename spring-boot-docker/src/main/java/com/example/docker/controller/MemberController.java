@@ -13,7 +13,6 @@ import java.util.Map;
 @RestController
 public class MemberController {
 
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/api/v1.0/member/{memberNo}")
     public ResponseEntity<Member> getMember(@PathVariable("memberNo") int memberNo) {
 
@@ -24,7 +23,6 @@ public class MemberController {
                 .build());
     }
 
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/api/v1.0/member")
     public ResponseEntity<Result> setMember(@RequestBody Member member) {
 

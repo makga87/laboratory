@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
-docker run -p 127.0.0.1:9200:9200 \
-  -p 127.0.0.1:9300:9300 \
-  -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.16.3
+
+docker run --rm -it \
+   -v $PWD/pipeline/:/usr/share/logstash/pipeline \
+   -v $PWD/config/:/usr/share/logstash/config \
+   docker.elastic.co/logstash/logstash:7.16.3
