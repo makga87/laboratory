@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class MainController {
 
     @GetMapping("/main")
-    public void getMember(@PathVariable("memberNo") int memberNo) {
+    public void getMember() {
         log.info("main controller hello~");
     }
 }
