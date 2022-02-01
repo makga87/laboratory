@@ -1,5 +1,11 @@
-http.host: "0.0.0.0"
-xpack.monitoring.elasticsearch.hosts: [ "http://localhost:9200" ]
+http:
+  host: "0.0.0.0"
 
-config.reload.automatic: true
-config.reload.interval: 3s
+xpack:
+  monitoring:
+    enabled: false
+
+config:
+  reload:
+    automatic: true
+    interval: 3s
