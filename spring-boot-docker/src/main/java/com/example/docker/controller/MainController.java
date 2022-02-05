@@ -12,6 +12,5 @@ public class MainController {
 
     @GetMapping("/main")
     public void getMember() {
-        log.info("main controller hello~");
     }
 }
