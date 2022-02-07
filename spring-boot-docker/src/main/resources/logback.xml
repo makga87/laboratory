@@ -7,6 +7,8 @@
         <encoder class="net.logstash.logback.encoder.LogstashEncoder">
             <mdcKeyFieldName>requestTime=requestTime</mdcKeyFieldName>
             <mdcKeyFieldName>responseTime=responseTime</mdcKeyFieldName>
+            <mdcKeyFieldName>latency=latency</mdcKeyFieldName>
+            <mdcKeyFieldName>txLog=txLog</mdcKeyFieldName>
         </encoder>
     </appender>
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">

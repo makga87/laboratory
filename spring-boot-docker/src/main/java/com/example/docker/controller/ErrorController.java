@@ -6,9 +6,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-public class MainController {
+public class ErrorController {
 
-    @GetMapping("/main")
-    public void getMember() {
+    @GetMapping("/error")
+    public void getError() {
+        log.error("Error controller", new RuntimeException("error controller"));
     }
 }
