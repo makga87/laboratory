@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Slf4j
 @Configuration
@@ -17,7 +18,7 @@ public class LogInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        MDC.put("requestTime", LocalDateTime.now().toString());
+        MDC.put("requestTime", String.valueOf(System.currentTimeMillis()));
 
         return true;
     }
@@ -25,7 +26,12 @@ public class LogInterceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 
-        MDC.put("responseTime", LocalDateTime.now().toString());
+        long requestTime = Long.parseLong(MDC.get("requestTime"));
+        long responseTime = System.currentTimeMillis();
+
+        MDC.put("responseTime", String.valueOf(responseTime));
+        MDC.put("latency", String.valueOf(responseTime - requestTime));
+        MDC.put("txLog", System.currentTimeMillis() + "." + UUID.randomUUID().toString());
     }
 
     @Override
