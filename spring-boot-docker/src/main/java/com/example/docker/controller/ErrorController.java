@@ -10,6 +10,6 @@ public class ErrorController {
 
     @GetMapping("/error")
     public void getError() {
-        log.error("Error controller", new RuntimeException("error controller"));
+        log.error("Error controller", (new RuntimeException("error controller")).getCause().getMessage());
     }
 }
