@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: prometheus_test_app
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics, prometheus
+  metrics:
+    tags:
+      application: ${spring.application.name}
