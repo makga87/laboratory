@@ -5,7 +5,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: metrics, prometheus
+        include: "prometheus"
   metrics:
     tags:
       application: ${spring.application.name}
