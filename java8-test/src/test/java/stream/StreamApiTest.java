@@ -11,10 +11,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -411,6 +408,15 @@ class StreamApiTest {
 
         System.out.println(collectList.toString());
 
+    }
+
+    @Test
+    void EMPTY리스트는_스트림_호출시_에러발생안함 (){
+        List list = Collections.emptyList()
+                .stream()
+                .collect(Collectors.toList());
+
+        System.out.println(list);
     }
 
 }
