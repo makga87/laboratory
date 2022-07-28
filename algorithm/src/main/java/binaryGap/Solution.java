@@ -2,6 +2,9 @@ package binaryGap;
 
 import java.util.Stack;
 
+/**
+ * 1 Hour
+ */
 public class Solution {
 
     public int solution(int N) {
