@@ -6,12 +6,9 @@ import java.util.Stack;
  * 1 Hour
  */
 public class Solution {
-
     public int solution(int N) {
-        // write your code in Java SE 8
         return N > 0 ? getMaxBinaryGap(N) : 0;
     }
-
     private int getMaxBinaryGap(int N) {
         Stack<Integer> binaryStack = new Stack<>();
 
@@ -32,10 +29,7 @@ public class Solution {
         }
         return max;
     }
-
-
     private void binary(int N, Stack<Integer> binaryStack) {
-
         binaryStack.push(remain(N));
 
         int _div = divide(N);
@@ -45,13 +39,10 @@ public class Solution {
             binaryStack.push(_div);
         }
     }
-
     private int divide(int N) {
         return N / 2;
     }
-
     private int remain(int N) {
         return N % 2;
     }
-
 }
