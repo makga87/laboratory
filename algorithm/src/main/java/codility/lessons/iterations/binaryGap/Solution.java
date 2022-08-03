@@ -1,4 +1,4 @@
-package binaryGap;
+package codility.lessons.iterations.binaryGap;
 
 import java.util.Stack;
 
