@@ -1,4 +1,4 @@
-package binaryGap;
+package codility.lessons.iterations.binaryGap;
 
 public class OhterSolution {
 
