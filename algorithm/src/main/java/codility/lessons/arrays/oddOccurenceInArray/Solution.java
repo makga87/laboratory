@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 /**
  * 22 min
+ * O(N) or O(N*log(N))
  */
 public class Solution {
     public int solution(int[] A) {

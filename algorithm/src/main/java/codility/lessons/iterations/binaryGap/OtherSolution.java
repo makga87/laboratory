@@ -1,6 +1,6 @@
 package codility.lessons.iterations.binaryGap;
 
-public class OhterSolution {
+public class OtherSolution {
 
     public int solution(int N) {
 
