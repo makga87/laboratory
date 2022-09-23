@@ -18,7 +18,7 @@ public class Solution {
     }
 
     public int getValue(int x1, int x2, int r1, int r2) {
-        if((x2 - x1) <= r1 + r2) return 1;
+        if((x2 - x1 - r1) <= r2) return 1;
         return 0;
     }
 }
