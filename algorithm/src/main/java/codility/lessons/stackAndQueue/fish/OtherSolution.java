@@ -1,5 +1,7 @@
 package codility.lessons.stackAndQueue.fish;
 
+import java.util.Stack;
+
 /*
 You are given two non-empty arrays A and B consisting of N integers. Arrays A and B represent N voracious fish in a river, ordered downstream along the flow of the river.
 
@@ -40,71 +42,28 @@ each element of array B is an integer that can have one of the following values:
 the elements of A are all distinct.
  */
 
-import java.util.Stack;
-
 /**
- * 50%
+ * 방향성이 있는 경우, 한방향만 계산 후, 다음 계산을 이어가는 방법도 괜찮아보임
  */
-public class Solution {
+public class OtherSolution {
 
     public int solution(int[] A, int[] B) {
 
-        Stack<Integer> aliveFish = new Stack<>();
-        Stack<Integer> streamDirection = new Stack<>();
+        Stack<Integer> down = new Stack<>();
+        int lastSize;
+        int aliveCount = 0;
 
         for (int i = 0; i < A.length; i++) {
-
-            int a = A[i];
-            int b = B[i];
-
-            if (aliveFish.isEmpty()) {
-                aliveFish.push(a);
-                streamDirection.push(b);
-            } else {
-
-                if (streamDirection.peek() == 1 && streamDirection.peek() != b) {
-                    if (aliveFish.peek() < a) {
-                        aliveFish.pop();
-                        streamDirection.pop();
-
-                        aliveFish.push(a);
-                        streamDirection.push(b);
-                    }
-                } else {
-                    aliveFish.push(a);
-                    streamDirection.push(b);
+            if (B[i] == 1) down.push(A[i]);
+            else {
+                while (!down.isEmpty()) {
+                    lastSize = down.peek();
+                    if (lastSize > A[i]) break;
+                    else down.pop();
                 }
+                if (down.isEmpty()) aliveCount++;
             }
         }
-
-        int aliveSize = aliveFish.size();
-
-        if (streamDirection.peek() == 1) {
-            return aliveSize;
-        }
-
-        int beforeSize = -1;
-        int beforeDirection = -1;
-
-        int cnt = aliveSize;
-
-        for (int j = aliveSize - 1; j >= 0; j--) {
-            if (j == aliveSize - 1) {
-                beforeSize = aliveFish.pop();
-                beforeDirection = streamDirection.pop();
-            } else {
-                if (streamDirection.peek() != beforeDirection) {
-                    if (aliveFish.peek() < beforeSize) {
-                        aliveFish.pop();
-                        streamDirection.pop();
-                    }
-                    cnt--;
-                } else {
-                    break;
-                }
-            }
-        }
-
-        return cnt;
+        return aliveCount + down.size();
     }
 }
