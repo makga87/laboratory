@@ -21,7 +21,6 @@ class Solution {
 
                 int value = dataMap.get(A[i]);
                 value++;
-
                 if(value >= dominatorSize) return i;
                 else {
                     dataMap.put(A[i], value);
