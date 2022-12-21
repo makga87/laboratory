@@ -17,8 +17,8 @@ public class TicketService {
 	private final TicketRepository ticketRepository;
 
 	@Transactional
-	public void serviceAsLoop() {
-		for (int i = 0; i < 5; i++) {
+	public void serviceAsLoop() throws InterruptedException {
+		for (int i = 0; i < 10; i++) {
 			serviceTicket();
 		}
 	}
