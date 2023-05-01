@@ -1,6 +1,7 @@
 package com.example.springinflearntoby;
 
 import com.example.springinflearntoby.controller.HelloController;
+import com.example.springinflearntoby.controller.SimpleHelloService;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.WebServer;
@@ -23,6 +24,7 @@ public class SpringInflearnTobyApplication {
     public static void main(String[] args) {
 
         GenericApplicationContext applicationContext = new GenericApplicationContext();
+        applicationContext.registerBean(SimpleHelloService.class);
         applicationContext.registerBean(HelloController.class);
         applicationContext.refresh();
 

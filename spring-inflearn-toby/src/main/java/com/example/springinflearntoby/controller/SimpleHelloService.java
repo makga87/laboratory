@@ -1,8 +1,9 @@
 package com.example.springinflearntoby.controller;
 
-public class SimpleHelloService {
+public class SimpleHelloService implements HelloService {
 
-    String sayHello(String contents) {
+    @Override
+    public String sayHello(String contents) {
         return "Hello" + contents;
     }
 }
