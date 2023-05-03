@@ -20,6 +20,10 @@ public class Fibonacci {
 
     }
 
+    /**
+     * before memoization
+     *
+     */
     public long fun(int num) {
         if (num == 1 || num == 2) {
             return 1;
@@ -30,8 +34,6 @@ public class Fibonacci {
     /**
      * memoization
      *
-     * @param num
-     * @return
      */
     public long fun2(int num) {
 
@@ -43,7 +45,6 @@ public class Fibonacci {
         if (num <= 2) {
             return 1;
         }
-
         return numArr[num] = fun2(num - 1) + fun2(num - 2);
     }
 
