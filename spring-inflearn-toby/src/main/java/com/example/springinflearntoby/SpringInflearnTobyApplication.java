@@ -25,19 +25,25 @@ public class SpringInflearnTobyApplication {
 
     public static void main(String[] args) {
 
-        GenericWebApplicationContext applicationContext = new GenericWebApplicationContext();
+        GenericWebApplicationContext applicationContext = new GenericWebApplicationContext() {
+            @Override
+            protected void onRefresh() {
+                super.onRefresh(); // NOTE : 절대 생략 하면 안되
+                ServletWebServerFactory servletWebServerFactory = new TomcatServletWebServerFactory();
+                WebServer webServer = servletWebServerFactory.getWebServer((servletContext) -> {
+
+                    servletContext
+                            .addServlet("dispacherServlet", new DispatcherServlet(this))
+                            .addMapping("/*");
+                });
+                webServer.start();
+            }
+        };
         applicationContext.registerBean(SimpleHelloService.class);
         applicationContext.registerBean(HelloController.class);
         applicationContext.refresh();
 
-        ServletWebServerFactory servletWebServerFactory = new TomcatServletWebServerFactory();
-        WebServer webServer = servletWebServerFactory.getWebServer((servletContext) -> {
 
-            servletContext
-                    .addServlet("dispacherServlet", new DispatcherServlet(applicationContext))
-                    .addMapping("/*");
-        });
-        webServer.start();
     }
 
 }
