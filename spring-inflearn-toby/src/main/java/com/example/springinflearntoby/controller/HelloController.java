@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Objects;
 
-@RequestMapping("/myapp")
+@RequestMapping("/hello")
 public class HelloController {
 
     private final HelloService helloService;
@@ -16,7 +16,7 @@ public class HelloController {
     }
 
 
-    @GetMapping("/hello")
+    @GetMapping
     @ResponseBody
     public String hello(String name) {
 
