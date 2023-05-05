@@ -11,6 +11,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.context.support.GenericWebApplicationContext;
+import org.springframework.web.servlet.DispatcherServlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +25,7 @@ public class SpringInflearnTobyApplication {
 
     public static void main(String[] args) {
 
-        GenericApplicationContext applicationContext = new GenericApplicationContext();
+        GenericWebApplicationContext applicationContext = new GenericWebApplicationContext();
         applicationContext.registerBean(SimpleHelloService.class);
         applicationContext.registerBean(HelloController.class);
         applicationContext.refresh();
@@ -31,29 +33,9 @@ public class SpringInflearnTobyApplication {
         ServletWebServerFactory servletWebServerFactory = new TomcatServletWebServerFactory();
         WebServer webServer = servletWebServerFactory.getWebServer((servletContext) -> {
 
-            servletContext.addServlet("frontController", new HttpServlet() {
-                @Override
-                protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-                    //
-                    if (req.getRequestURI().equals("/hello") && req.getMethod().equals(HttpMethod.GET.name())) {
-
-                        String name = req.getParameter("name");
-
-                        HelloController helloController = applicationContext.getBean(HelloController.class);
-                        String ret = helloController.hello(name);
-
-                        resp.setStatus(HttpStatus.OK.value());
-                        resp.setContentType(MediaType.TEXT_PLAIN_VALUE);
-                        resp.getWriter().println(ret);
-
-                    } else if (req.getRequestURI().equals("/user")) {
-
-                    } else {
-
-                        resp.setStatus(HttpStatus.NOT_FOUND.value());
-                    }
-                }
-            }).addMapping("/*");
+            servletContext
+                    .addServlet("dispacherServlet", new DispatcherServlet(applicationContext))
+                    .addMapping("/*");
         });
         webServer.start();
     }
