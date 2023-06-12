@@ -1,0 +1,23 @@
+server:
+  port: 8089
+
+spring:
+  boot:
+    admin:
+      client:
+        instance:
+          service-url: http://localhost:8089
+        url: http://localhost:8000
+
+logging:
+  file:
+    path: ./logs/data-a.log
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
