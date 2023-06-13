@@ -3,11 +3,11 @@ package stringMatch;
 /**
  * ASC II 값만으로 구해보는 라빈 카프 문자열 검색
  */
-public class RabinKarpSubStringSearchStep3 {
+public class RabinKarpSubStringSearchStep4 {
 
     public static void main(String[] args) {
 
-        RabinKarpSubStringSearchStep3 rabinKarp = new RabinKarpSubStringSearchStep3();
+        RabinKarpSubStringSearchStep4 rabinKarp = new RabinKarpSubStringSearchStep4();
         String input = "cctaacabfswacacat";
         System.out.println(input.length());
         String keyword = "cat";
