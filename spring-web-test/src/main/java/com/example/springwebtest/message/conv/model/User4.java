@@ -6,12 +6,12 @@ import lombok.extern.slf4j.Slf4j;
 public class User4 implements Response {
 
     private String emailYn;
-    private String marcketingYn;
+    private String marketingYn;
 
-    public User4(String emailYn, String marcketingYn) {
+    public User4(String emailYn, String marketingYn) {
         log.debug("### User4 파라메터 생성자");
         this.emailYn = emailYn;
-        this.marcketingYn = marcketingYn;
+        this.marketingYn = marketingYn;
     }
 
     private User4() {
@@ -20,19 +20,19 @@ public class User4 implements Response {
 
     public String getEmailYn() {
         log.debug("### getEmailYn 호출");
-        return getMarcketingYn();
+        return getMarketingYn();
     }
 
     public void setEmailYn(String emailYn) {
         log.debug("### setEmailYn 호출");
-        setMarcketingYn(emailYn);
+        setMarketingYn(emailYn);
     }
 
-    public String getMarcketingYn() {
-        return marcketingYn;
+    public String getMarketingYn() {
+        return marketingYn;
     }
 
-    public void setMarcketingYn(String marcketingYn) {
-        this.marcketingYn = marcketingYn;
+    public void setMarketingYn(String marketingYn) {
+        this.marketingYn = marketingYn;
     }
 }
