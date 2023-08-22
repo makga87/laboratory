@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 public class User2 implements Response {
 
     private String emailYn;
-    private String marcketingYn;
+    private String marketingYn;
 
 
     public User2() {
@@ -16,20 +16,20 @@ public class User2 implements Response {
     public String getEmailYn() {
         log.debug("### getEmailYn 호출");
 
-        return getMarcketingYn();
+        return getMarketingYn();
     }
 
     public void setEmailYn(String emailYn) {
         log.debug("### setEmailYn 호출");
 
-        setMarcketingYn(emailYn);
+        setMarketingYn(emailYn);
     }
 
-    public String getMarcketingYn() {
-        return marcketingYn;
+    public String getMarketingYn() {
+        return marketingYn;
     }
 
-    public void setMarcketingYn(String marcketingYn) {
-        this.marcketingYn = marcketingYn;
+    public void setMarketingYn(String marketingYn) {
+        this.marketingYn = marketingYn;
     }
 }

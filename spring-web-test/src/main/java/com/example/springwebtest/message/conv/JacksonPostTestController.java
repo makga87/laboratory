@@ -1,14 +1,6 @@
 package com.example.springwebtest.message.conv;
 
-import com.example.springwebtest.message.conv.model.Response;
-import com.example.springwebtest.message.conv.model.User1;
-import com.example.springwebtest.message.conv.model.User2;
-import com.example.springwebtest.message.conv.model.User3;
-import com.example.springwebtest.message.conv.model.User4;
-import com.example.springwebtest.message.conv.model.User5;
-import com.example.springwebtest.message.conv.model.User6;
-import com.example.springwebtest.message.conv.model.User7;
-import com.example.springwebtest.message.conv.model.User8;
+import com.example.springwebtest.message.conv.model.*;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -67,6 +59,18 @@ public class JacksonPostTestController {
 	@PostMapping("/jackson/test8")
 	public Response jacksonTest(@RequestBody User8 user) {
 		log.debug("user8 : {}", user);
+		return user;
+	}
+
+	@PostMapping("/jackson/test9")
+	public Response jacksonTest(@RequestBody User9 user) {
+		log.debug("user9 : {}", user);
+		return user;
+	}
+
+	@PostMapping("/jackson/test10")
+	public Response jacksonTest(@RequestBody User10 user) {
+		log.debug("user10 : {}", user);
 		return user;
 	}
 }

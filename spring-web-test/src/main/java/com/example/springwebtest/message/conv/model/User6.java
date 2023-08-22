@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 public class User6 implements Response {
 
 	private String emailYn;
-	private String marcketingYn;
+	private String marketingYn;
 
 	public User6() {
 		log.debug("### User6 기본 생성자");
@@ -17,7 +17,7 @@ public class User6 implements Response {
 		return emailYn;
 	}
 
-	public String getMarcketingYn() {
-		return marcketingYn;
+	public String getMarketingYn() {
+		return marketingYn;
 	}
 }
