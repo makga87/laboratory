@@ -1,12 +1,10 @@
 package com.example.springwebtest.message.conv.model;
 
 import lombok.Builder;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Builder
-@Data
 public class User3 implements Response {
 
     private String emailYn;
