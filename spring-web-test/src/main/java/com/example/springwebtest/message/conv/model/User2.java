@@ -10,11 +10,6 @@ public class User2 implements Response {
     private String emailYn;
     private String marcketingYn;
 
-    public User2(String emailYn, String marcketingYn) {
-        log.debug("### User2 파라메터 생성자");
-        this.emailYn = emailYn;
-        this.marcketingYn = marcketingYn;
-    }
 
     public User2() {
         log.debug("### User2 기본 생성자");
