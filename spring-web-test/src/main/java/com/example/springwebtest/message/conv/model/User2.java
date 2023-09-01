@@ -1,13 +1,13 @@
 package com.example.springwebtest.message.conv.model;
 
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
-
+@ToString
 @Slf4j
 public class User2 implements Response {
 
     private String emailYn;
     private String marketingYn;
-
 
     public User2() {
         log.debug("### User2 기본 생성자");
