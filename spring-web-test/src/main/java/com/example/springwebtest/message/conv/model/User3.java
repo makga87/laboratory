@@ -1,8 +1,9 @@
 package com.example.springwebtest.message.conv.model;
 
 import lombok.Builder;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
-
+@ToString
 @Slf4j
 @Builder
 public class User3 implements Response {

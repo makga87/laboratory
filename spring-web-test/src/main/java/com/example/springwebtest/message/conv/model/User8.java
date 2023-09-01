@@ -14,7 +14,6 @@ public class User8 implements Response {
 
 	public void setEmailYn(String emailYn) {
 		log.debug("### setEmailYn 호출");
-
 		setMarketingYn(emailYn);
 	}
 	public void setMarketingYn(String marketingYn) {
