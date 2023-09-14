@@ -80,4 +80,9 @@ public class JacksonGetTestController {
 		log.debug("user11 : {}", user);
 		return user;
 	}
+
+	@GetMapping("/jackson/test12")
+	public void jacksonTest(UserId userId) {
+		log.debug("### userId : {}", userId);
+	}
 }
