@@ -7,6 +7,6 @@ public class SimpleHelloService implements HelloService {
 
     @Override
     public String sayHello(String contents) {
-        return "Hello" + contents;
+        return "Hello " + contents;
     }
 }
