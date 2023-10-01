@@ -1,6 +1,7 @@
 package com.example.springinflearntoby;
 
 import com.example.springinflearntoby.config.MySpringBootAnnotation;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +16,7 @@ public class SpringInflearnTobyApplication {
     }
 
     public static void main(String[] args) {
-        MySpringApplication.run(SpringInflearnTobyApplication.class, args);
+        SpringApplication.run(SpringInflearnTobyApplication.class, args);
     }
 
 
