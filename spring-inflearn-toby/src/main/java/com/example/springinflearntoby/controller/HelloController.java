@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Objects;
 
 @RestController
-@RequestMapping("/hello")
 public class HelloController {
 
     private final HelloService helloService;
@@ -19,8 +18,7 @@ public class HelloController {
     }
 
 
-    @GetMapping
-    @ResponseBody
+    @GetMapping("/hello")
     public String hello(String name) {
 
         return helloService.sayHello(Objects.requireNonNull(name));
