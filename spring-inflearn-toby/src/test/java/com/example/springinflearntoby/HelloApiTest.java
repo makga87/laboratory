@@ -13,12 +13,12 @@ public class HelloApiTest {
     @Test
     void helloApi() {
         TestRestTemplate testRestTemplate = new TestRestTemplate();
-        ResponseEntity<String> res = testRestTemplate.getForEntity("http://localhost:8080/hello?name=${name}", String.class, "Spring");
+        ResponseEntity<String> res = testRestTemplate.getForEntity("http://localhost:8080/hello?name={name}", String.class, "Spring");
 
         Assertions.assertThat(res.getStatusCode()).isEqualTo(HttpStatus.OK);
 
         Assertions.assertThat(res.getHeaders().getFirst(HttpHeaders.CONTENT_TYPE)).startsWith(MediaType.TEXT_PLAIN_VALUE);
 
-        Assertions.assertThat(res.getBody()).isEqualTo("Hello Spring");
+        Assertions.assertThat(res.getBody()).isEqualTo("*HelloSpring*");
     }
 }
