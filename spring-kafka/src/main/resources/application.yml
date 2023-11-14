@@ -1,0 +1,14 @@
+spring:
+  kafka:
+    bootstrap-servers: 10.162.5.66:9092, 10.162.5.66:9093, 10.162.5.66:9094
+    consumer:
+      group-id: "payment-group"
+      auto-offset-reset: latest
+      key-serializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-serializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      bootstrap-servers: 10.162.5.66:9092, 10.162.5.66:9093, 10.162.5.66:9094
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+server:
+  port: 8080

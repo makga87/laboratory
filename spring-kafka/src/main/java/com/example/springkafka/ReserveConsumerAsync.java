@@ -1,3 +1,4 @@
+/*
 package com.example.springkafka;
 
 import java.time.Duration;
@@ -41,3 +42,4 @@ public class ReserveConsumerAsync {
 		}
 	}
 }
+*/

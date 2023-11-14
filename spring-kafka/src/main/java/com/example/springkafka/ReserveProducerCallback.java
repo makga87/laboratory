@@ -1,3 +1,4 @@
+/*
 package com.example.springkafka;
 
 import org.apache.kafka.clients.producer.Callback;
@@ -21,3 +22,4 @@ public class ReserveProducerCallback implements Callback {
 		}
 	}
 }
+*/
