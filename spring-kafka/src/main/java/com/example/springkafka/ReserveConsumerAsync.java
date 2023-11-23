@@ -1,4 +1,4 @@
-/*
+
 package com.example.springkafka;
 
 import java.time.Duration;
@@ -15,15 +15,15 @@ public class ReserveConsumerAsync {
 	public static void main(String[] args) {
 
 		Properties props = new Properties();
-		props.put("bootstrap.servers", "localhost:29092,localhost:39092,localhost:49092");
-		props.put("group.id", "reserve-consumer-01");
+		props.put("bootstrap.servers", "10.162.5.66:9092, 10.162.5.66:9093, 10.162.5.66:9094");
+		props.put("group.id", "kafka-tx-test-consumer-01");
 		props.put("enable.auto.commit", "false");
 		props.put("auto.offset.reset", "latest");
 		props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 		props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 
 		Consumer<String, String> consumer = new KafkaConsumer<>(props);
-		consumer.subscribe(Arrays.asList("reserve"));
+		consumer.subscribe(Arrays.asList("transaction-topic"));
 
 		try {
 			while (true) {
@@ -42,4 +42,4 @@ public class ReserveConsumerAsync {
 		}
 	}
 }
-*/
+
