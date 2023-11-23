@@ -8,7 +8,8 @@ import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
 
-public class ExactlyOneProducer {
+public class ExactlyOneProducerTest2 {
+
 	public static void main(String[] args) {
 
 		String bootstrapservers = "10.162.5.66:9092, 10.162.5.66:9093, 10.162.5.66:9094";
@@ -21,28 +22,36 @@ public class ExactlyOneProducer {
 		props.setProperty(ProducerConfig.ACKS_CONFIG, "all"); // 중복없는 전송을 위한 필수 설정
 		props.setProperty(ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION, "5"); // ACK를 받지 않은 상태에서 하나의 커넥션에서 보낼 수 있는 최대 요청 수
 		props.setProperty(ProducerConfig.RETRIES_CONFIG, "5");
-		props.setProperty(ProducerConfig.TRANSACTIONAL_ID_CONFIG, "kafka-transaction-01");
+		props.setProperty(ProducerConfig.TRANSACTIONAL_ID_CONFIG, "Lee-Dong-Hee");
+		props.setProperty(ProducerConfig.LINGER_MS_CONFIG, "5000"); // 버퍼에 담아두다가 지정된 시간이 지나면 자동으로 flush
 
 		Producer<String, String> producer = new KafkaProducer<String, String>(props);
-		producer.initTransactions();
-		producer.beginTransaction();
+		producer.initTransactions(); // transaction topic 이 EMPTY상태, epoch가 +1 된다.
 
 		try {
 
-			for (int i = 0; i < 7; i++) {
-				ProducerRecord<String, String> record = new ProducerRecord<>("kafka-1", "Apache Kafka is a distributed streaming platform - " + i);
-				producer.send(record);
-				producer.flush();
+			for (int j = 0; j < 2; j++) {
+				producer.beginTransaction();
 
-				System.out.println("Message sent successfully");
+				for (int i = 0; i < 1; i++) {
+					ProducerRecord<String, String> record = new ProducerRecord<>("transaction-topic",
+																				 "Hello Kafka TX - " + i);
+					producer.send(record);
 
+					System.out.println("Message sent successfully");
+
+					producer.flush(); // transaction topic 이 ONGOING
+
+				}
+				producer.commitTransaction();
 			}
 
+
 		} catch (Exception e) {
-			producer.abortTransaction();
+			producer.abortTransaction(); // transaction topic abort 값 이 COMPLETE ABORT
 			e.printStackTrace();
 		} finally {
-			producer.commitTransaction();
+			//	producer.commitTransaction(); // transaction topic 이 COMPLETE
 			producer.close();
 		}
 	}
