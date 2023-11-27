@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import com.example.springmultimodule.feat.member.MemberService;
 
 @Service
-public class MemberServiceImpl implements MemberService {
+public class DefaultMemberServiceImpl implements MemberService {
 
 	@Override
 	public int getMemberNo() {
