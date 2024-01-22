@@ -143,13 +143,21 @@ class OptionalApiTest {
 		String result = nameArr.stream()
 							   .filter(name -> name.equals("D"))
 							   .findFirst()
-							   .get();
+									   .orElseGet(()-> null);
+//							   .get();
 
 		/**
 		 * 아래는 정상동작
 		 */
 		//							   .orElseGet(()->"D");
 		//							   .orElse("D");
+		//							   .orElse(null);
+
+		/**
+		 * 아래는 에러
+		 */
+		//							   .orElseGet(null); --> orElseGet은 supplier.get으로 호출하므로, ()->null로 입력해야 정상동작
+
 
 		System.out.println(result);
 	}
