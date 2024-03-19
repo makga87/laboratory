@@ -29,5 +29,23 @@ class RedisConfigurationTest {
 		Assertions.assertEquals(value.toString(), ticket);
 	}
 
+	/**
+	 * 캐싱할 객체에 반드시 implements Serializable 필요
+	 */
+	@DisplayName("Redis Hash 타입 데이터 테스트")
+	@Test
+	void testRedisHashDataType() {
+		String key = "ticket1";
+		String hashKey = "hashKey1";
+		Ticket value = new Ticket(1, 1);
+
+		redisTemplate.opsForHash().put(key, hashKey, value);
+		Ticket ticket = (Ticket) redisTemplate.opsForHash().get(key, hashKey);
+
+		System.out.println(ticket);
+
+		Assertions.assertEquals(value.toString(), ticket.toString());
+	}
+
 
 }
