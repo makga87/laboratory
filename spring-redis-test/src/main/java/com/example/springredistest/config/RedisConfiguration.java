@@ -26,25 +26,11 @@ public class RedisConfiguration {
 		);
 	}
 
-	//    @Bean
-	//    public CacheManager contentCacheManager(RedisConnectionFactory redisConnectionFactory) {
-	//        RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
-	//                .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer()))
-	//                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer())) // Value Serializer 변경
-	//                .entryTtl(Duration.ofSeconds(60));
-	//
-	//        return RedisCacheManager.RedisCacheManagerBuilder
-	//                .fromConnectionFactory(redisConnectionFactory)
-	//                .cacheDefaults(redisCacheConfiguration)
-	//                .build();
-	//    }
-
 	@Bean
 	public RedisTemplate<String, Object> redisTemplate() {
 		RedisTemplate redisTemplate = new RedisTemplate();
 		redisTemplate.setConnectionFactory(redisConnectionFactory());
-//		redisTemplate.setKeySerializer(new StringRedisSerializer());
-//		redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer<>(String.class));
+
 		return redisTemplate;
 	}
 }
