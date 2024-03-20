@@ -44,6 +44,7 @@ class RedisConfigurationTest {
 
 		System.out.println(ticket);
 
+		Assertions.assertNotNull(ticket);
 		Assertions.assertEquals(value.toString(), ticket.toString());
 	}
 
@@ -59,14 +60,12 @@ class RedisConfigurationTest {
 		redisTemplate.opsForList().rightPush(key, new Ticket(1, 1));
 		redisTemplate.opsForList().leftPush(key, new Ticket(2, 2));
 		redisTemplate.opsForList().rightPush(key, new Ticket(3, 3));
-		System.out.println("==================================================");
 		System.out.println(redisTemplate.opsForList().getOperations().opsForList().range(key, 0, -1));
 		System.out.println("==================================================");
 
 		redisTemplate.opsForList().rightPop(key);
 		redisTemplate.opsForList().rightPop(key);
 
-		System.out.println("==================================================");
 		System.out.println(redisTemplate.opsForList().getOperations().opsForList().range(key, 0, -1));
 		System.out.println("==================================================");
 		redisTemplate.opsForList().getOperations().delete(key);
@@ -91,7 +90,6 @@ class RedisConfigurationTest {
 
 		redisTemplate.opsForSet().pop(key);
 
-		System.out.println("==================================================");
 		System.out.println(redisTemplate.opsForSet().members(key));
 		System.out.println("==================================================");
 
@@ -115,9 +113,27 @@ class RedisConfigurationTest {
 		redisTemplate.opsForZSet().incrementScore(key, new Ticket(2, 2), 2);
 		redisTemplate.opsForZSet().popMax(key);
 
-		System.out.println("==================================================");
 		System.out.println(redisTemplate.opsForZSet().range(key, 0, -1));
 		System.out.println("==================================================");
-
 	}
+
+
+	@DisplayName("Redis Set 타입 isMember 테스트")
+	@Test
+	void testRedisSetSscan() {
+
+		String key = "tickets";
+		redisTemplate.opsForSet().getOperations().delete(key);
+
+		redisTemplate.opsForSet().add(key, "banana");
+		redisTemplate.opsForSet().add(key, "apple");
+		redisTemplate.opsForSet().add(key, "kiwi");
+
+		Boolean result = redisTemplate.opsForSet().isMember(key, "apple");
+		System.out.println(result);
+		System.out.println("==================================================");
+
+		Assertions.assertTrue(result);
+	}
+
 }
