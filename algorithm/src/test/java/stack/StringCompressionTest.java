@@ -50,6 +50,12 @@ class StringCompressionTest {
         result.append(cnt);
 
         Assertions.assertEquals(expect, result.toString());
+
+        // 5. 문자열만 뽑기
+        System.out.println(result.toString().replaceAll("[^a-zA-Z]", ""));
+        // 6. 숫자만 뽑기
+        System.out.println(result.toString().replaceAll("[^0-9]", ""));
+
     }
 
 }
