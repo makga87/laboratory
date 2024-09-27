@@ -1,4 +1,4 @@
-package bruteforce;
+package bruteforce.step1;
 
 public class Equation {
 
