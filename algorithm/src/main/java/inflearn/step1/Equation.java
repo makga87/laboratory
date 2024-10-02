@@ -1,4 +1,4 @@
-package bruteforce.step1;
+package inflearn.step1;
 
 public class Equation {
 

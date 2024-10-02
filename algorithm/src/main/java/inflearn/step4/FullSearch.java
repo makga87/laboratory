@@ -1,7 +1,6 @@
-package bruteforce.step4;
+package inflearn.step4;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class FullSearch {
     private int N = 4;

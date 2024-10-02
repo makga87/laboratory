@@ -1,8 +1,4 @@
-package bruteforce.step3;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.stream.IntStream;
+package inflearn.step3;
 
 public class ImosLaw {
     public static void main(String[] args) {
