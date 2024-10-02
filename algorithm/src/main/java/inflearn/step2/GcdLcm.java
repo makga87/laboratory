@@ -1,4 +1,4 @@
-package bruteforce.step2;
+package inflearn.step2;
 
 /**
  * 최대 공약수 간격을 최소한까지 줄여도 구할 수 있다.

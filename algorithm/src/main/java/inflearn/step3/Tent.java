@@ -1,4 +1,4 @@
-package bruteforce.step3;
+package inflearn.step3;
 
 import java.util.Arrays;
 

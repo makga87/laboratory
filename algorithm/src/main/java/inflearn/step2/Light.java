@@ -1,4 +1,4 @@
-package bruteforce.step2;
+package inflearn.step2;
 
 
 /**
