@@ -18,13 +18,13 @@ class CacheServiceTest {
     @Test
     public void cacheableTest() {
 
-        List<CodeDto> codeDtos1 = cacheService.getCodes(new CodeDto(1));
+        List<CodeDto> codeDtos1 = cacheService.getCodes(new CodeDto("1"));
         log.info("###### {}", codeDtos1);
 
-        List<CodeDto> codeDtos2 = cacheService.getCodes(new CodeDto(1));
+        List<CodeDto> codeDtos2 = cacheService.getCodes(new CodeDto("1"));
         log.info("###### {}", codeDtos2);
 
-        List<CodeDto> codeDtos3 = cacheService.getCodes(new CodeDto(2));
+        List<CodeDto> codeDtos3 = cacheService.getCodes(new CodeDto("2"));
         log.info("###### {}", codeDtos3);
 
     }
@@ -33,10 +33,10 @@ class CacheServiceTest {
     @Test
     public void cacheputTest() {
 
-        List<CodeDto> codeDtos1 = cacheService.putCodes(1);
+        List<CodeDto> codeDtos1 = cacheService.putCodes("1");
         log.info("###### {}", codeDtos1);
 
-        List<CodeDto> codeDtos2 = cacheService.putCodes(1);
+        List<CodeDto> codeDtos2 = cacheService.putCodes("1");
         log.info("###### {}", codeDtos2);
     }
 }
