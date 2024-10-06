@@ -10,13 +10,12 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-@CacheConfig(cacheNames = "test")
+@CacheConfig(cacheNames = "myFirstEhCache")
 public class CacheService {
 
 
-    @Cacheable(value = "codeCacheInfo", key = "#codeDto.grpCd")
+    @Cacheable(key = "#codeDto.grpCd")
     public List<CodeDto> getCodes(CodeDto codeDto){
-
 
         List<CodeDto> codeDtos = Arrays.asList(new CodeDto(codeDto.getGrpCd()),
                 new CodeDto(codeDto.getGrpCd()+1),
@@ -24,8 +23,8 @@ public class CacheService {
         return codeDtos;
     }
 
-    @CachePut(value = "codeCacheInfo", key="#grpCd")
-    public List<CodeDto> putCodes(int grpCd) {
+    @CachePut(key="#grpCd")
+    public List<CodeDto> putCodes(String grpCd) {
         List<CodeDto> codeDtos = Arrays.asList(new CodeDto(grpCd),
                 new CodeDto(grpCd+1),
                 new CodeDto(grpCd+2));

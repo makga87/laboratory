@@ -32,8 +32,6 @@ class GeneralTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("test");
 
-        assertT
-
     }
 
     class Version {

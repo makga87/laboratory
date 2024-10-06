@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: "spring-cache"
+
+  cache:
+    jcache:
+      config: classpath:ehcache.xml
+logging:
+  level:
+    root: DEBUG
+    io.undertow: DEBUG
+    org.springframework: DEBUG
+    org.ehcache: DEBUG
+server:
+  port: 8080
+
+
+
+
