@@ -16,7 +16,7 @@ public class CombinationsTest {
 		int n = 4;
 		int k = 2;
 
-		List<List<Integer>> result = combine(4, 2);
+		List<List<Integer>> result = combine(4, 2, new ArrayList<>());
 
 		System.out.println(result);
 	}
@@ -26,8 +26,8 @@ public class CombinationsTest {
 		List<List<Integer>> result = new ArrayList<>();
 
 		for (int i = 1; i <= k; i++) {
-			List<Integer> unit = new ArrayList<>();
-			combine()
+			List<Integer> _unit = new ArrayList<>();
+			combine(i, k, _unit);
 		}
 
 		System.out.println(result);
