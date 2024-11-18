@@ -1,3 +1,0 @@
-com.example.springinflearntoby.config.autoconfig.TomcatWebServerConfig
-com.example.springinflearntoby.config.autoconfig.JettyWebServerConfig
-com.example.springinflearntoby.config.autoconfig.DispatcherServletConfig
