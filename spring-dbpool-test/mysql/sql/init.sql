@@ -1,4 +1,0 @@
-CREATE TABLE IF NOT EXISTS spring_context_test.user(
-    id INT(11) PRIMARY KEY,
-    `name` VARCHAR(20)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
